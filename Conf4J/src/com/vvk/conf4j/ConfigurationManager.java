@@ -11,14 +11,14 @@ import org.apache.commons.configuration2.PropertiesConfiguration;
 
 public class ConfigurationManager {
 	
-	Map<String, PropertiesConfiguration> mapOfTokenConfigurations = null;
+	Map<String, Configuration> mapOfTokenConfigurations = null;
 	Configuration masterConfiguration = null;
 	
 	static {
 		
 	}
 	
-	public ConfigurationManager(Map<String, PropertiesConfiguration> mapOfTokenConfigurations2, Configuration masterConfiguration) {
+	public ConfigurationManager(Map<String, Configuration> mapOfTokenConfigurations2, Configuration masterConfiguration) {
 		this.mapOfTokenConfigurations = mapOfTokenConfigurations2;
 		this.masterConfiguration = masterConfiguration;
 	}

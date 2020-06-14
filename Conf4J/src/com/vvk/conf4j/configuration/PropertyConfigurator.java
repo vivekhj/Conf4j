@@ -11,6 +11,10 @@ import java.util.Properties;
 import org.apache.commons.configuration2.CompositeConfiguration;
 import org.apache.commons.configuration2.Configuration;
 import org.apache.commons.configuration2.PropertiesConfiguration;
+import org.apache.commons.configuration2.builder.ReloadingFileBasedConfigurationBuilder;
+
+import com.vvk.conf4j.configuration.builder.core.ConfigurationBuilderFactory;
+import com.vvk.conf4j.configuration.builder.core.ConfigurationBuilderFactoryHelper;
 
 public class PropertyConfigurator {
 	
@@ -24,20 +28,21 @@ public class PropertyConfigurator {
 	static final String FILE_BACKUP_INTERVAL_SUFFIX = "conf4j.backup.Interval";	
 	static final String CONF4J_PROPERTIES_KEY = "conf4j.properties";
 	
-	Map<String, PropertiesConfiguration> mapOfTokenConfigurations = null;
-	Configuration masterConfiguration = null;
+	Map<String, ReloadingFileBasedConfigurationBuilder> mapOfTokenConfigurationBuilders = null;
+//	Configuration masterConfiguration = null;
+	ReloadingFileBasedConfigurationBuilder masterConfigurationBuilder = null;
 	
 	public PropertyConfigurator() throws Exception {
 		doConfigure();
 	}
 	
-	public Map<String, PropertiesConfiguration> getMapOfTokenConfigurations(){
-		return mapOfTokenConfigurations;
-	}
-	
-	public Configuration getMasterConfiguration(){
-		return masterConfiguration;
-	}
+//	public Map<String, Configuration> getMapOfTokenConfigurations(){
+//		return mapOfTokenConfigurations;
+//	}
+//	
+//	public Configuration getMasterConfiguration(){
+//		return masterConfiguration;
+//	}
 	
 	private void doConfigure() throws Exception {
 		String propertyPath = System.getProperty(CONF4J_PROPERTIES_KEY);
@@ -88,17 +93,31 @@ public class PropertyConfigurator {
 			listOfTokenInfo.add(index, tokenInfo);
 		}
 		
-		mapOfTokenConfigurations = new HashMap<String, PropertiesConfiguration>(noOfTokens);		
+//		mapOfTokenConfigurations = new HashMap<String, Configuration>(noOfTokens);		
+//		for(TokenInfo tokenInfo:listOfTokenInfo) {
+//			Configuration configuration = 
+//					ConfigurationReader.readAsConfiguration(tokenInfo.getConfigFilePath());
+//			mapOfTokenConfigurations.put(tokenInfo.getName(), configuration);
+//		}		
+//		masterConfiguration = createMasterConfiguration(mapOfTokenConfigurations);		
+		
+		mapOfTokenConfigurationBuilders = new HashMap<String, ReloadingFileBasedConfigurationBuilder>(noOfTokens);		
 		for(TokenInfo tokenInfo:listOfTokenInfo) {
-			PropertiesConfiguration configuration = 
-					(PropertiesConfiguration) ConfigurationReader.readAsConfiguration(tokenInfo.getConfigFilePath());
-			mapOfTokenConfigurations.put(tokenInfo.getName(), configuration);
+			ReloadingFileBasedConfigurationBuilder configurationBuilder = 
+					ConfigurationBuilderFactoryHelper.createReloadingFileBasedConfigurationBuilder(tokenInfo.getConfigFilePath());
+			mapOfTokenConfigurationBuilders.put(tokenInfo.getName(), configurationBuilder);
 		}		
-		masterConfiguration = createMasterConfiguration(mapOfTokenConfigurations);		
+		masterConfigurationBuilder = createMasterConfigurationBuilder(mapOfTokenConfigurationBuilders);	
 	}
 
-	private Configuration createMasterConfiguration(Map<String, PropertiesConfiguration> mapOfTokenConfigMaps) {
-		List<PropertiesConfiguration> configurations = new ArrayList<>();
+	private ReloadingFileBasedConfigurationBuilder createMasterConfigurationBuilder(
+			Map<String, ReloadingFileBasedConfigurationBuilder> mapOfTokenConfigurations2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private Configuration createMasterConfiguration(Map<String, Configuration> mapOfTokenConfigMaps) {
+		List<Configuration> configurations = new ArrayList<>();
 		mapOfTokenConfigMaps.forEach((k, v) -> configurations.add(v));		
 		return new CompositeConfiguration(configurations);
 	}
@@ -127,5 +146,14 @@ public class PropertyConfigurator {
 		
 		return tokenInfo;
 	}
+
+	public ReloadingFileBasedConfigurationBuilder getMasterConfigurationBuilder() {
+		return masterConfigurationBuilder;
+	}
+
+	public Map<String, ReloadingFileBasedConfigurationBuilder> getMapOfTokenConfigurationBuilders() {
+		return mapOfTokenConfigurationBuilders;
+	}
+
 
 }

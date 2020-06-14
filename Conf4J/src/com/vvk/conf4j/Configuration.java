@@ -9,7 +9,7 @@ public class Configuration {
 	
 	ConfigurationManager confManager = null;
 	
-	protected Configuration(ConfigurationManager confManager) {
+	public Configuration(ConfigurationManager confManager) {
 		this.confManager = confManager; 
 	}
 	
