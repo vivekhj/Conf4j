@@ -1,5 +1,5 @@
 # Conf4J
-> Conf4j stands for Configuration For Java.
+> Conf4j-Configuration For Java.
 
 
 
