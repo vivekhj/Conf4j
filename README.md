@@ -1,4 +1,4 @@
-[![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
+[![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/vivekhj/conf4j/blob/master/LICENSE)
 # Conf4J
 > Conf4j-Configuration For Java.
 
