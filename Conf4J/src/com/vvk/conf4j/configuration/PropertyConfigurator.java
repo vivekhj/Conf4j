@@ -10,10 +10,8 @@ import java.util.Properties;
 
 import org.apache.commons.configuration2.CompositeConfiguration;
 import org.apache.commons.configuration2.Configuration;
-import org.apache.commons.configuration2.PropertiesConfiguration;
 import org.apache.commons.configuration2.builder.ReloadingFileBasedConfigurationBuilder;
 
-import com.vvk.conf4j.configuration.builder.core.ConfigurationBuilderFactory;
 import com.vvk.conf4j.configuration.builder.core.ConfigurationBuilderFactoryHelper;
 
 public class PropertyConfigurator {
