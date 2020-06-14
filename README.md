@@ -15,12 +15,12 @@ Conf4j - One stop solution for all the configurations in your application.
 
 After importing the project/jar, just add this 2 lines of code in your project:
 ```
-			ConfigurationBuilder configurationBuilder = ConfigurationBuilderFactory.createConfigurationBuilder();
-			Configuration configuration = configurationBuilder.getConfiguration();
+ConfigurationBuilder configurationBuilder = ConfigurationBuilderFactory.createConfigurationBuilder();
+Configuration configuration = configurationBuilder.getConfiguration();
 ```
 After this any configuration you need to access/get, you can do it like below:
 ```
-			String property = configuration.getString("property_name");		
+String property = configuration.getString("property_name");		
 ```
 
 To make it work, add conf4j.properties file in the projects path with contents like below:
