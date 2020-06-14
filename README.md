@@ -14,13 +14,18 @@ Conf4j - One stop solution for all the configurations in your application.
 ## Usage example
 
 After importing the project/jar, just add this 2 lines of code in your project:
+```
 			ConfigurationBuilder configurationBuilder = ConfigurationBuilderFactory.createConfigurationBuilder();
 			Configuration configuration = configurationBuilder.getConfiguration();
+```
 After this any configuration you need to access/get, you can do it like below:
+```
 			String property = configuration.getString("property_name");		
+```
 
 To make it work, add conf4j.properties file in the projects path with contents like below:
 
+```
 conf4j.configuration.files.Token=FILE1,FILE2
 
 FILE1.conf4j.configuration.files.Path=<path to the configuration file>
@@ -38,7 +43,7 @@ FILE2.conf4j.fileWatcher.Interval=60
 FILE2.conf4j.backup.Enable=true
 FILE2.conf4j.backup.Directory=
 FILE2.conf4j.backup.Interval=86400
-
+```
 
 ## Release History
 
