@@ -1,3 +1,4 @@
+[![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 # Conf4J
 > Conf4j-Configuration For Java.
 
