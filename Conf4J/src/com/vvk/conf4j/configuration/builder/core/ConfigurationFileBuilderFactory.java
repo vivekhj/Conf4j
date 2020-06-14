@@ -1,5 +1,6 @@
-package com.vvk.conf4j.configuration;
+package com.vvk.conf4j.configuration.builder.core;
 
+import com.vvk.conf4j.configuration.ConfigurationFileType;
 import com.vvk.conf4j.configuration.builder.ConfigurationFileBuilder;
 import com.vvk.conf4j.configuration.builder.ConfigurationJSONBuilder;
 import com.vvk.conf4j.configuration.builder.ConfigurationPropertiesBuilder;

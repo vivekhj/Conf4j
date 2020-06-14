@@ -12,7 +12,7 @@ import org.apache.commons.configuration2.reloading.PeriodicReloadingTrigger;
 public class ConfigurationXMLBuilder implements ConfigurationFileBuilder {
 
 	@Override
-	public ReloadingFileBasedConfigurationBuilder getBuilder(String configFilePath) {
+	public ReloadingFileBasedConfigurationBuilder getBuilder(String configFilePath, int reloadTriggerPeriod) {
 		Parameters params = new Parameters();
 		ReloadingFileBasedConfigurationBuilder<XMLConfiguration> builder = null;		
 		FileBasedBuilderParameters buildParams = params.fileBased();		
@@ -21,9 +21,11 @@ public class ConfigurationXMLBuilder implements ConfigurationFileBuilder {
 		builder = new ReloadingFileBasedConfigurationBuilder<XMLConfiguration>(XMLConfiguration.class)
 				.configure(buildParams);
 
-		PeriodicReloadingTrigger trigger = new PeriodicReloadingTrigger(builder.getReloadingController(),
-				null, 10, TimeUnit.SECONDS);
-		trigger.start();
+		if(reloadTriggerPeriod > 0) {
+			PeriodicReloadingTrigger trigger = new PeriodicReloadingTrigger(builder.getReloadingController(),
+					null, reloadTriggerPeriod, TimeUnit.SECONDS);
+			trigger.start();
+		}
 
 		return builder;
 	}

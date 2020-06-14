@@ -4,5 +4,5 @@ import org.apache.commons.configuration2.builder.ReloadingFileBasedConfiguration
 
 public interface ConfigurationFileBuilder {
 
-	ReloadingFileBasedConfigurationBuilder getBuilder(String configFilePath);
+	ReloadingFileBasedConfigurationBuilder getBuilder(String configFilePath, int reloadTriggerPeriod);
 }

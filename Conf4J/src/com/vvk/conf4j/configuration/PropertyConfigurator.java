@@ -104,7 +104,7 @@ public class PropertyConfigurator {
 		mapOfTokenConfigurationBuilders = new HashMap<String, ReloadingFileBasedConfigurationBuilder>(noOfTokens);		
 		for(TokenInfo tokenInfo:listOfTokenInfo) {
 			ReloadingFileBasedConfigurationBuilder configurationBuilder = 
-					ConfigurationBuilderFactoryHelper.createReloadingFileBasedConfigurationBuilder(tokenInfo.getConfigFilePath());
+					ConfigurationBuilderFactoryHelper.createReloadingFileBasedConfigurationBuilder(tokenInfo);
 			mapOfTokenConfigurationBuilders.put(tokenInfo.getName(), configurationBuilder);
 		}		
 		masterConfigurationBuilder = createMasterConfigurationBuilder(mapOfTokenConfigurationBuilders);	
