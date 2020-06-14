@@ -18,7 +18,6 @@ public class ConfigurationBuilderFactory {
 						propertyConfigurator.getMasterConfigurationBuilder();
 				Map<String, ReloadingFileBasedConfigurationBuilder> mapOfTokenConfigurationBuilder = 
 						propertyConfigurator.getMapOfTokenConfigurationBuilders();
-				System.out.println("vvk mapOfTokenConfigurationBuilder.size:" + mapOfTokenConfigurationBuilder.size());
 				ConfigurationBuilderManager configurationBuilderManager = 
 						new ConfigurationBuilderManager(mapOfTokenConfigurationBuilder, masterConfigurationBuilder);
 				configurationBuilder = new ConfigurationBuilder(configurationBuilderManager);

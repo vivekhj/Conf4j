@@ -20,8 +20,6 @@ public class ConfigurationBuilder {
 	public Configuration getConfiguration() {
 		
 		Map<String, org.apache.commons.configuration2.Configuration> mapOfTokenConfigurations = getMapOfTokenConfigurations();
-		System.out.println("vvk mapOfTokenConfigurations.size:" + mapOfTokenConfigurations.size());
-		
 		org.apache.commons.configuration2.Configuration masterConfiguration = createMasterConfiguration(mapOfTokenConfigurations);
 		
 		ConfigurationManager configurationManager = new ConfigurationManager(mapOfTokenConfigurations, masterConfiguration);
